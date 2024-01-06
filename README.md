@@ -24,7 +24,7 @@ To use this script, follow these steps:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/smoke-free-tracker.git
+git clone https://github.com/tutizaraz/ns.git
 
 # Configure a cron job to run the script daily
 crontab -e
