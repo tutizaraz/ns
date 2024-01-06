@@ -29,7 +29,6 @@ def write_last_run_date(filename, date):
         file.write(date.strftime('%Y-%m-%d %H:%M:%S'))
 
 def update_smoking_status(csv_file, last_run_file):
-    last_run_date = read_last_run_date(last_run_file)
     current_date = datetime.now(timezone.utc)
 
     last_smoked_date, days_without_smoking = read_data(csv_file)
