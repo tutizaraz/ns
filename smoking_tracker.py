@@ -32,15 +32,14 @@ def update_smoking_status(csv_file, last_run_file):
     last_run_date = read_last_run_date(last_run_file)
     current_date = datetime.now(timezone.utc)
 
-    if last_run_date is None or (current_date - last_run_date).days > 0:
-        last_smoked_date, days_without_smoking = read_data(csv_file)
-        updated_days_without_smoking = (current_date - last_smoked_date).days
+    last_smoked_date, days_without_smoking = read_data(csv_file)
+    updated_days_without_smoking = (current_date - last_smoked_date).days
 
-        if updated_days_without_smoking != days_without_smoking:
-            write_data(csv_file, last_smoked_date, updated_days_without_smoking)
-            print(f"Updated: {updated_days_without_smoking} days without smoking")
-        else:
-            print(f"No update needed: {days_without_smoking} days without smoking")
+    if updated_days_without_smoking != days_without_smoking:
+        write_data(csv_file, last_smoked_date, updated_days_without_smoking)
+        print(f"Updated: {updated_days_without_smoking} days without smoking")
+    else:
+        print(f"{days_without_smoking} days without smoking")
 
     write_last_run_date(last_run_file, current_date)
 
